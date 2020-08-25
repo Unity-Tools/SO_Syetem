@@ -41,10 +41,12 @@ public class InvokeAfterSecounds : MonoBehaviour
 
     public void ManualStart()
     {
-        if (Loop != true || CO == null)
+        if (CO != null)
         {
-            CO = StartCoroutine(InvokeAfterCO());
+            StopCoroutine(CO);
         }
+        CO = StartCoroutine(InvokeAfterCO());
+
     }
 
     public void ManualStop()
@@ -56,7 +58,8 @@ public class InvokeAfterSecounds : MonoBehaviour
 
     private void OnDisable()
     {
-        StopCoroutine(CO);
+        if (CO != null)
+            StopCoroutine(CO);
     }
 
 
