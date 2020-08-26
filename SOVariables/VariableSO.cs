@@ -48,9 +48,10 @@ namespace SO
         public void OnAfterDeserialize()
         {
             _value = startingValue;
+            UnSubscripeAll();
         }
 
-        public void OnBeforeSerialize() { }
+        public void OnBeforeSerialize() { UnSubscripeAll(); }
 
         /// <summary>
         /// Reset the Value to it's inital Value if it's resettable
@@ -58,6 +59,7 @@ namespace SO
         public override void ResetValue()
         {
             Value = startingValue;
+           
         }
 
 
@@ -68,7 +70,7 @@ namespace SO
     {
         public EventSO OnChanged;
         protected event System.EventHandler valChanged;
-
+        List<EventHandler> supEvents = new List<EventHandler>();
         protected virtual void RaisEvents()
         {
             if (this.valChanged != null) valChanged(this, EventArgs.Empty);
@@ -78,12 +80,21 @@ namespace SO
         public void Subscripe(System.EventHandler onValChanged)
         {
             valChanged += onValChanged;
+            supEvents.Add(onValChanged);
         }
         public void UnSubscripe(System.EventHandler onValChanged)
         {
             valChanged -= onValChanged;
+            supEvents.Remove(onValChanged);
         }
-
+        public void UnSubscripeAll()
+        {
+            for (int i = 0; i < supEvents.Count; i++)
+            {
+                valChanged -= supEvents[i];
+            }
+            supEvents.Clear();
+        }
 
         public abstract string ToString(string format, IFormatProvider formatProvider);
 
