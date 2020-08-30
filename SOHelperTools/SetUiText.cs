@@ -21,7 +21,7 @@ public class SetUiText : MonoBehaviour
     public string OutputFormat = "{0}/{1}";
     [Header("Text to update")]
     [SerializeField]
-    TextType textType;
+    private TextType textType;
     public GameObject[] UiTextRefrences;
     [Header("Update mode")]
     public bool OnVariablesUpdated;
@@ -64,17 +64,17 @@ public class SetUiText : MonoBehaviour
 
         for (int i = 0; i < DataSources.Length; i++)
         {
-            if (DataSources[i] is stringSO)
+            if (DataSources[i] is StringSO)
             {
-                StringData.Add(((stringSO)DataSources[i]).GetValue());
+                StringData.Add(((StringSO)DataSources[i]).GetValue());
             }
-            else if (DataSources[i] is intSO)
+            else if (DataSources[i] is IntSO)
             {
-                StringData.Add(((intSO)DataSources[i]).GetValue().ToString());
+                StringData.Add(((IntSO)DataSources[i]).GetValue().ToString());
             }
-            else if (DataSources[i] is floatSO)
+            else if (DataSources[i] is FloatSO)
             {
-                StringData.Add(((floatSO)DataSources[i]).GetValue().ToString());
+                StringData.Add(((FloatSO)DataSources[i]).GetValue().ToString());
             }
             else
             {
