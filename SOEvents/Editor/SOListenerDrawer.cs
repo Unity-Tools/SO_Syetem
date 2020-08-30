@@ -36,8 +36,6 @@ namespace SO
                         Rect prefixPos = EditorGUI.PrefixLabel(position, GUIContent.none);
                         AddProberty(property, new GUIContent(val.name), EditorGUIUtility.singleLineHeight); // draw the elemnt Arrow   
                         AddProberty(sOEvent, GUIContent.none);
-
-
                         //prefixPos.y = position.y;
                         //AddHelp(ref prefixPos,val.eventDescription, MessageType.Info);
 
@@ -46,7 +44,7 @@ namespace SO
                         prefixPos.y = position.y;
                         AddProberty(ref prefixPos, Response);
 
-                        AddProberty(WhatTheEventDO);
+                        //AddProberty(WhatTheEventDO);
                     }
                     else
                     {//minimized ----------------------------------------------------
@@ -85,10 +83,10 @@ namespace SO
                     if (property.isExpanded)
                     { //expanded ----------------------------------------------------
                         return EditorGUI.GetPropertyHeight(sOEvent)
-                             //  + calculateTextHeight(val.eventDescription,position)
+                                //  + calculateTextHeight(val.eventDescription,position)
                                 + EditorGUI.GetPropertyHeight(listenWhenDisabled)
                                  + EditorGUI.GetPropertyHeight(Response)
-                                  + EditorGUI.GetPropertyHeight(WhatTheEventDO)
+                                  //+ EditorGUI.GetPropertyHeight(WhatTheEventDO)
                                     + EditorGUIUtility.singleLineHeight;
                     }
                     else

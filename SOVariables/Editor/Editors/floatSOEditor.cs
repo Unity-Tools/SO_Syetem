@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace SO
 {
-    [CustomEditor(typeof(floatSO))]
+    [CustomEditor(typeof(FloatSO))]
     [CanEditMultipleObjects]
     public class floatSOEditor : VariableSOEditor<float>
     {

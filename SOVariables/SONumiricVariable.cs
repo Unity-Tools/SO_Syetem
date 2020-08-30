@@ -6,6 +6,11 @@ namespace SO
 {
     public abstract class NumiricVariableSO<T> : VariableSO<T>
     {
+        //public static VariableSO<T> operator +(NumiricVariableSO<T> a, T b)
+        //{
+        //    a.Add(b);
+        //    return a;
+        //}
 
         public abstract void Divide(T num);
         public void Divide(NumiricVariableSO<T> numSO)

@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using Nakama.TinyJson;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SO.Events
@@ -8,48 +11,92 @@ namespace SO.Events
     public class EventSO : ScriptableObject
     {
 
-        public List<SOListener> listeners = new List<SOListener>();
+        public class ListenerEventPair
+        {
+            public EventListenerSO listener;
+            public ObjectEvent objectEvent;
+
+            public ListenerEventPair(EventListenerSO listener, ObjectEvent objectEvent)
+            {
+                this.listener = listener;
+                this.objectEvent = objectEvent;
+            }
+        }
+
+        public List<ListenerEventPair> listenersCallbacks = new List<ListenerEventPair>();
 
         [TextArea]
         [Tooltip("When is this event raised")]
         public string eventDescription = "[When does this event trigger]";
 
-        public IVariableSO Value;
+
+
         public void Raise()
         {
-            Debug.Log("Raise: " + name);
-            for (int i = listeners.Count - 1; i >= 0; i--)
-                listeners[i].Response.Invoke();
+            Raise(null);
         }
 
-        public void RegisterListener(SOListener listener )
+        public void Raise(object value)
         {
-            if (!listeners.Contains(listener))
+            Debug.LogWarning("Raise: " + name);
+            for (int i = listenersCallbacks.Count - 1; i >= 0; i--)
             {
-                Debug.LogWarning("register: " + listener.source.gameObject.name + " on "+ name);
-                listeners.Add(listener);
-            }
-        }
-        public void UnregisterListener(SOListener listener)
-        {
-            if (listeners.Contains(listener))
-            {
-                Debug.LogWarning("unregister: " + listener.source.gameObject.name + " on " + name);
-                listeners.Remove(listener);
+                listenersCallbacks[i].objectEvent.Invoke(value);
             }
         }
 
+        public void RegisterListener(EventListenerSO listener, ObjectEvent callback)
+        {
+            if (!IsRegistered(listener))
+            {
+                listenersCallbacks.Add(new ListenerEventPair(listener, callback));
+            }
+        }
+
+
+
+        public void UnregisterListener(EventListenerSO listener)
+        {
+            ListenerEventPair listenerEventPair = null;
+            if (Find(listener, out listenerEventPair))
+            {
+                listenersCallbacks.Remove(listenerEventPair);
+            }
+        }
+
+        private bool Find(EventListenerSO listener, out ListenerEventPair listenerEventPair)
+        {
+            listenerEventPair = null;
+            for (int i = listenersCallbacks.Count - 1; i >= 0; i--)
+            {
+                if (listenersCallbacks[i].listener == listener)
+                {
+                    listenerEventPair = listenersCallbacks[i];
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool IsRegistered(EventListenerSO listener)
+        {
+            for (int i = listenersCallbacks.Count - 1; i >= 0; i--)
+            {
+                if (listenersCallbacks[i].listener == listener) return true;
+            }
+            return false;
+        }
         public void Awake()
         {
-            listeners = new List<SOListener>();
+            listenersCallbacks.Clear();
         }
         public void OnAfterDeserialize()
         {
-            listeners = new List<SOListener>();
+            listenersCallbacks.Clear();
         }
-
-        public void OnBeforeSerialize() {
-            listeners = new List<SOListener>();
+        public void OnBeforeSerialize()
+        {
+            listenersCallbacks.Clear();
         }
     }
 }

@@ -2,21 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SO
 {
-    [CreateAssetMenu(fileName = "stringSO", menuName = "SO/Variables/String")]
-    public class stringSO : VariableSO<string>
+    public class SOEnumVariable<T> : VariableSO<T> where T : System.Enum, IConvertible
     {
         public override void SetValue(string value)
         {
-            Value = value;
+            Value = (T)Enum.Parse(typeof(T), value);
         }
 
         public override string ToString(string format, IFormatProvider formatProvider)
         {
-            return Value;
+            return Enum.GetName(typeof(T), Value);
         }
     }
 }

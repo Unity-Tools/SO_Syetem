@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace SO
 {
-    [CustomPropertyDrawer(typeof(stringSO), true)]
+    [CustomPropertyDrawer(typeof(StringSO), true)]
     public class stringSODrawer : IVariableSODrawer
     {
         protected override void VraiableField(Rect position, GUIContent label, IVariableSO variableSO)
         {
-            var varRefrence = (stringSO)variableSO;
+            var varRefrence = (StringSO)variableSO;
             varRefrence.Value = EditorGUI.TextField(position, label, varRefrence.Value);
         }
     }

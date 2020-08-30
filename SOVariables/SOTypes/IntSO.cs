@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace SO
 {
     [CreateAssetMenu(fileName = "intSO", menuName = "SO/Variables/Integer")]
-    public class intSO : NumiricVariableSO<int>
+    public class IntSO : NumiricVariableSO<int>
     {
         public override void Divide(int num)
         {

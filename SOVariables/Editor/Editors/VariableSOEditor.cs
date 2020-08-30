@@ -32,6 +32,10 @@ namespace SO
 
             //Display a int input field and button to add the inputted Value to the current Value
             ModifyValue = GetEditorGUILayoutValue(ModifyValue);
+
+            //  EditorGUILayout.PropertyField(serializedObject.FindProperty("value"));
+            //  serializedObject.ApplyModifiedProperties();
+           // script.se
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
 

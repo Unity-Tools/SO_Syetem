@@ -14,9 +14,9 @@ public class CompareIntegerSOVariables : MonoBehaviour
     }
 
     [Header("CompareRule")]
-    public intSO var1;
+    public IntSO var1;
     public CompareRules compareRules;
-    public intSO var2_SO;
+    public IntSO var2_SO;
     public int var2_int;
     [Header("settings")]
     public bool AutoListen = true;

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace SO
 {
     [CreateAssetMenu(fileName = "boolSO", menuName = "SO/Variables/Bool")]
-    public class boolSO : VariableSO<bool>
+    public class BoolSO : VariableSO<bool>
     {
         public override void SetValue(string value)
         {

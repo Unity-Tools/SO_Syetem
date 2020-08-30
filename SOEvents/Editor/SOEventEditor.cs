@@ -30,14 +30,13 @@ namespace SO.Events
             //base.OnInspectorGUI();
 
             EditorGUILayout.PropertyField(description);
-            EditorGUILayout.PropertyField(Value);
             if (GUILayout.Button("Raise"))
             {
                 script.Raise();
             }
             GuiLine(1);
             // EditorGUILayout.PropertyField(listeners);
-            ShowList(listeners, script.listeners);
+         //   ShowList(listeners, script.listeners);
             serializedObject.ApplyModifiedProperties();
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace SO
 {
     [CreateAssetMenu(fileName = "floatSO", menuName = "SO/Variables/Float")]
-    public class floatSO : NumiricVariableSO<float>
+    public class FloatSO : NumiricVariableSO<float>
     {
         public override void Divide(float num)
         {

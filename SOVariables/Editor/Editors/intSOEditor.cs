@@ -8,7 +8,7 @@ using UnityEditor;
 
 namespace SO
 {
-    [CustomEditor(typeof(intSO))]
+    [CustomEditor(typeof(IntSO))]
     [CanEditMultipleObjects]
     public class intSOEditor : VariableSOEditor<int>
     {
