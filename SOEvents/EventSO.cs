@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Nakama.TinyJson;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace SO.Events
@@ -27,16 +31,22 @@ namespace SO.Events
 
 
 
-        public void Raise()
+         public void Raise()
         {
-            Raise(null);
+            RaiseAsync(null);
         }
 
         public void Raise(object value)
         {
             Debug.LogWarning("Raise: " + name);
+            RaiseAsync(value);
+        }
+        public /*async*/ void RaiseAsync(object value)
+        {
+           // await Task.Delay(1);
             for (int i = listenersCallbacks.Count - 1; i >= 0; i--)
             {
+                Debug.LogWarning("event: " + name + " invoke " + listenersCallbacks[i].listener.name);
                 listenersCallbacks[i].objectEvent.Invoke(value);
             }
         }

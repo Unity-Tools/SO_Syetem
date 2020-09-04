@@ -25,7 +25,7 @@ namespace SO
 
         public static implicit operator T(VariableSO<T> v)
         {
-            return v.Value;
+            return v.Value ;
         }
 
         //public static implicit operator VariableSO<T>(T v)
@@ -37,7 +37,16 @@ namespace SO
         {
             if (log) Debug.Log("SetValue: " + newValue + " on " + name);
             _value = newValue;
-            RaisEvents();
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                startingValue = _value;
+            }
+#endif
+            if (OnChanged != null)
+            {
+                RaisEvents();
+            }
         }
 
         public void SetValue(VariableSO<T> numSO)
@@ -76,7 +85,7 @@ namespace SO
 
     }
 
-    public abstract class IVariableSO : ScriptableObject, IFormattable, System.Runtime.Serialization.ISerializable
+    public abstract class IVariableSO : ScriptableObject, IFormattable , System.Runtime.Serialization.ISerializable
     {
         public EventSO OnChanged;
         protected event System.EventHandler valChanged;

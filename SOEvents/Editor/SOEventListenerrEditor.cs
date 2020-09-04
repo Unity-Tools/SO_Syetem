@@ -24,7 +24,7 @@ namespace SO
         {
             script = (EventListenerSO)target;
             newSize = script.listeners.Count;
-            eventList = new ReorderableList(serializedObject, serializedObject.FindProperty("listeners"), false, true, true, true);
+            eventList = new ReorderableList(serializedObject, serializedObject.FindProperty("listeners"), true, true, true, true);
             var list = script.listeners;
             var serialisedList = serializedObject.FindProperty("listeners");
             eventList.elementHeight = EditorGUIUtility.singleLineHeight;
