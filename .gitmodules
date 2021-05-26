@@ -3,4 +3,4 @@
 url=git@github.com:omar92/SO_System.git
 [submodule "SO_StateMachine"]
 	path = SO_StateMachine
-	url = https://github.com/omar92/so_statemachine
+url=git@github.com:omar92/so_statemachine.git
