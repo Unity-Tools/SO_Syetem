@@ -1,6 +1,6 @@
 [submodule "SO_System"]
 	path = SO_System
-url=git@github.com:omar92/SO_System.git
+url=git@gitlab.com:zigame/Games_tools/SO_System_SubModule.git
 [submodule "SO_StateMachine"]
 	path = SO_StateMachine
-url=git@github.com:omar92/so_statemachine.git
+url=git@gitlab.com:zigame/Games_tools/so_statemachine.git
