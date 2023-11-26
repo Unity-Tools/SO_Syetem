@@ -1,6 +1,6 @@
-[submodule "SO_System_SubModule"]
-	path = SO_System_SubModule
-	url = git@gitlab.com:zigame/Games_tools/so_statemachine.git
 [submodule "SO_SateMachine"]
 	path = SO_SateMachine
+	url = git@gitlab.com:zigame/Games_tools/SO_System_SubModule.git
+[submodule "SO_System_SubModule"]
+	path = SO_System_SubModule
 	url = git@gitlab.com:zigame/Games_tools/SO_System_SubModule.git
