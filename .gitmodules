@@ -3,4 +3,4 @@
 	url = git@gitlab.com:zigame/Games_tools/so_statemachine.git
 [submodule "SO_SateMachine"]
 	path = SO_SateMachine
-	url = https://gitlab.com/zigame/Games_tools/so_statemachine.git
+	url = git@gitlab.com:zigame/Games_tools/SO_System_SubModule.git
