@@ -3,4 +3,4 @@
 	url = git@github.com:Unity-Tools/so_statemachine.git
 [submodule "SO_System_SubModule"]
 	path = SO_System_SubModule
-	url = https://gitlab.com/zigame/Games_tools/SO_System_SubModule.git
+	url = https://github.com/Unity-Tools/SO_System_SubModule.git
